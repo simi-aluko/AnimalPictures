@@ -8,6 +8,6 @@ It displays animal pictures for animal names entered in the edittext.
 
 It uses pixabay api 
 
-api url - https://pixabay.com/api/docs/#api_search_images
+API url - https://pixabay.com/api/docs/#api_search_images
 
-all images displayed are fetched from this api.
+All images displayed in the app are fetched from this api.
