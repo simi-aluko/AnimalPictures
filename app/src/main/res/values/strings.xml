@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AnimalPictures</string>
+    <string name="animal_name">Enter Animal Name</string>
+    <string name="apiKey">9171085-030cc72dd65de7f84a5925885</string>
+    <string name="baseUrl">https://pixabay.com/api/</string>
+</resources>
