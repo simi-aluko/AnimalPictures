@@ -1,10 +1,12 @@
 package com.example.simileoluwaaluko.animalpictures
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.KeyEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.simileoluwaaluko.animalpictures.Models.AnimalResultModel
@@ -25,9 +27,18 @@ class MainActivity : AppCompatActivity() {
 
         animal_name.setOnEditorActionListener { v, actionId, event ->
             if(event!=null && (event.keyCode == KeyEvent.KEYCODE_ENTER)){
-                progress_bar.visibility = ProgressBar.VISIBLE
-                val animalName = animal_name.text.toString()
+                //hide soft input keyboard
+                val view = this@MainActivity.currentFocus
+                if(view != null){
+                    val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+                }
 
+                //show progress bar
+                progress_bar.visibility = ProgressBar.VISIBLE
+
+                // validate user input and handle fetching of input result
+                val animalName = animal_name.text.toString()
                 if(validateAnimalNameInput(animalName)){
                     handleNetworkRequest(animalName)
                 }else{
